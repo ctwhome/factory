@@ -1,12 +1,21 @@
 {
   "name": "abc-english",
-  "private": true,
+  "version": "0.0.0",
   "dependencies": {
-    "bootstrap-sass-official": "~3.1.1",
-    "modernizr": "~2.6.2",
-    "jquery": "~1.11.0",
-    "requirejs": "~2.1.15",
-    "bootstrap-material-design": "~0.1.5"
+    "angular": "~1.2.0",
+    "json3": "~3.3.1",
+    "requirejs": "~2.1.14",
+    "es5-shim": "~4.0.3",
+    "angular-resource": "~1.2.0",
+    "angular-cookies": "~1.2.0",
+    "angular-sanitize": "~1.2.0",
+    "angular-animate": "~1.2.0",
+    "angular-touch": "~1.2.0",
+    "angular-route": "~1.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "angular-mocks": "~1.2.0",
+    "angular-scenario": "~1.2.0"
+  },
+  "appPath": "app"
 }
