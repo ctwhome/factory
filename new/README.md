@@ -1,9 +1,7 @@
 ABC English mobile app
 =========
 
-An application to learn English with ABC school. 
-
- 
+An application to learn English with ABC School. 
 
 
 Version
@@ -16,31 +14,45 @@ Tech
 
 This application uses a number of open source projects to work properly:
 
-* AngularJS
-* RequireJS
-* Bootstrap + Material design
+* AngularJS + RequireJS
+* Ionic Framework
+* Cordova
+* Couchbase
+--
 * Modernizr
-* Gulp
+* Grunt
 * [Ace Editor] - awesome web-based text editor
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [jQuery] - duh 
 
 Run
 --------------
 
 ```sh
-gulp serve
+grunt serve
 ```
 
+Generators (from [yo angular-require])
+---
+```sh
+angular-require (aka angular-require:app)
+angular-require:controller
+angular-require:directivels
+angular-require:filter
+angular-require:route
+angular-require:service
+angular-require:provider
+angular-require:factory
+angular-require:value
+angular-require:constant
+angular-require:decorator
+angular-require:view
+```
 
 License
 ----
 
 MIT
 
-
-**Free Software, Hell Yeah!**
-
+[yo angular-require]:https://github.com/aaronallport/generator-angular-require
 [john gruber]:http://daringfireball.net/
 [@thomasfuchs]:http://twitter.com/thomasfuchs
 [1]:http://daringfireball.net/projects/markdown/
