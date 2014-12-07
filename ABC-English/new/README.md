@@ -35,7 +35,7 @@ Generators (from [yo angular-require])
 ```sh
 angular-require (aka angular-require:app)
 angular-require:controller
-angular-require:directive
+angular-require:directivels
 angular-require:filter
 angular-require:route
 angular-require:service
