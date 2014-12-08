@@ -45,4 +45,23 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
+
+.controller('VocabularyCtrl', function($scope){
+
+            var xmlhttp = new XMLHttpRequest();
+            var url = "data/Vocabulary.json";
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var myArr = JSON.parse(xmlhttp.responseText);
+                    myFunction(myArr);
+                }
+            }
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            function myFunction(arr) {
+                $scope.cathegories = arr.cathegories;
+            }
+        });

@@ -5,28 +5,10 @@
   <ion-content class="has-header">
     <h1>Cathegories</h1>
     <div class="list">
-	    <a class="item item-thumbnail-left" href="#">
+        <a class="item item-thumbnail-left" href="#" ng-repeat="cathegory in cathegories">
 	      <img src="http://lorempixel.com/200/200/sports">
-	      <h2>Pretty Hate Machine</h2>
-	      <p>Nine Inch Nails</p>
-	    </a>
-
-	    <a class="item item-thumbnail-left" href="#">
-	      <img src="http://lorempixel.com/200/200/fashion">
-	      <h2>Pretty Hate Machine</h2>
-	      <p>Nine Inch Nails</p>
-	    </a>
-
-	    <a class="item item-thumbnail-left" href="#">
-	      <img src="http://lorempixel.com/200/200/people">
-	      <h2>Pretty Hate Machine</h2>
-	      <p>Nine Inch Nails</p>
-	    </a>
-
-	    <a class="item item-thumbnail-left" href="#">
-	      <img src="http://lorempixel.com/200/200">
-	      <h2>Pretty Hate Machine</h2>
-	      <p>Nine Inch Nails</p>
+	      <h2>{{cathegory.title}}</h2>
+	      <p>{{cathegory.desc}}</p>
 	    </a>
 </div>
   </ion-content>

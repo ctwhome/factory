@@ -1,0 +1,29 @@
+{
+    "cathegories" :
+    [
+    {
+        "id": 1,
+        "title": "House",
+        "desc": "Some description",
+        "imagePath": ""
+    },
+    {
+        "id": 2,
+        "title": "Feelings",
+        "desc": "Some description",
+        "imagePath": ""
+    },
+    {
+        "id": 1,
+        "title": "Body Parts",
+        "desc": "Some description",
+        "imagePath": ""
+    },
+    {
+        "id": 1,
+        "title": "A phone call",
+        "desc": "Some description",
+        "imagePath": ""
+    }
+]
+}

@@ -70,7 +70,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/vocabulary",
       views: {
         'menuContent' :{
-          templateUrl: "templates/vocabulary.html"
+          templateUrl: "templates/vocabulary.html",
+           controller: "VocabularyCtrl"
         }
       }
     })
