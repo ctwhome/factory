@@ -1,30 +1,27 @@
-<div data-ng-controller="GraphCtrl">
-  {{text}}
-  <!--<div google-chart chart="chart" style="{{chart1.cssStyle}}"/>-->
-</div>
-
-
-
-
 <div class="container">
   <div class="row clearfix">
     <div class="col-md-2 column">
       <a ng-href="#"><img class="img-responsive"src="images/stocks-logo.png" alt=""/></a>
     </div>
-    <div class="col-md-6 column">
-      Personal data
+
+    <div class="col-md-6 column" ng-controller="PersonaldataCtrl">
+      Personal data: <br>
+      Total capital: {{capital}} <br>
+      Risk: {{risk}} <br>
+      Profitability: {{profitability}}<br>
     </div>
-    <div class="col-md-4 column">
-      General data
-      yo
+
+    <div class="col-md-4 column" ng-controller="GeneraldataCtrl">
+      General data <br>
+      Companies availables : {{companies}} <br>
+      hitorial max: {{maximos}} <br>
+      More details: Modal button
     </div>
   </div>
   <div class="row clearfix">
+    <div ng-include="'scripts/templates/calculator.html'"></div>
     <div class="col-md-6 column">
-          <img class="img-responsive" src="https://www.udemy.com/blog/wp-content/uploads/2013/10/forextradingtutorial.jpg" alt=""/>
-    </div>
-    <div class="col-md-6 column">
-          <img class="img-responsive" src="https://www.udemy.com/blog/wp-content/uploads/2013/10/forextradingtutorial.jpg" alt=""/>
+          FILTERS
     </div>
   </div>
   <div class="row clearfix">

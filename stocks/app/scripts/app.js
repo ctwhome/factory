@@ -1,5 +1,5 @@
 /*jshint unused: vars */
-define(['angular', 'controllers/main', 'controllers/about', 'controllers/myroute', 'controllers/stocks', 'controllers/styleguide', 'controllers/graph']/*deps*/, function (angular, MainCtrl, AboutCtrl, MyrouteCtrl, StocksCtrl, StyleguideCtrl, GraphCtrl)/*invoke*/ {
+define(['angular', 'controllers/main', 'controllers/about', 'controllers/myroute', 'controllers/stocks', 'controllers/styleguide', 'controllers/graph', 'controllers/personaldata', 'controllers/generaldata']/*deps*/, function (angular, MainCtrl, AboutCtrl, MyrouteCtrl, StocksCtrl, StyleguideCtrl, GraphCtrl, PersonaldataCtrl, GeneraldataCtrl)/*invoke*/ {
   'use strict';
 
   /**
@@ -17,6 +17,8 @@ define(['angular', 'controllers/main', 'controllers/about', 'controllers/myroute
 'stocksApp.controllers.StocksCtrl',
 'stocksApp.controllers.StyleguideCtrl',
 'stocksApp.controllers.GraphCtrl',
+'stocksApp.controllers.PersonaldataCtrl',
+'stocksApp.controllers.GeneraldataCtrl',
 /*angJSDeps*/
     'ngCookies',
     'ngResource',

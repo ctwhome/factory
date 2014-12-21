@@ -10,7 +10,7 @@ define(['angular'], function (angular) {
    */
   angular.module('stocksApp.controllers.GraphCtrl', [])
     .controller('GraphCtrl', function ($scope) {
-
+      $scope.text= 'Hello from controller';
       //var chart1 = {};
       //chart1.type = "ColumnChart";
       //chart1.cssStyle = "height:200px; width:300px;";
@@ -62,7 +62,7 @@ define(['angular'], function (angular) {
       //
       //$scope.chart = chart1;
 
-      $scope.text= 'Hello from controller';
+
 
     });
 });
