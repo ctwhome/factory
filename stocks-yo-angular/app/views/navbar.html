@@ -1,10 +1,11 @@
-<nav class="navbar user-info-navbar"  role="navigation"><!-- User Info, Notifications and Menu Bar -->
+<!--  -->
+<nav class="navbar user-info-navbar"  role="navigation" ng-controller="navbarctrl"><!-- User Info, Notifications and Menu Bar -->
 
   <!-- Left links for user info navbar -->
   <ul class="user-info-menu left-links list-inline list-unstyled">
 
     <li class="hidden-sm hidden-xs">
-      <a data-toggle="sidebar">
+      <a data-toggle="sidebar" ng-click="toogleSettings()">
         <i class="fa-bars"></i>
       </a>
     </li>
