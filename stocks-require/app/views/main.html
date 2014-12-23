@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-2 column">
+      <a ng-href="#"><img class="img-responsive"src="images/stocks-logo.png" alt=""/></a>
+    </div>
+
+    <div class="col-md-6 column" ng-controller="PersonaldataCtrl">
+      Personal data: <br>
+      Total capital: {{capital}} <br>
+      Risk: {{risk}} <br>
+      Profitability: {{profitability}}<br>
+    </div>
+
+    <div class="col-md-4 column" ng-controller="GeneraldataCtrl">
+      General data <br>
+      Companies availables : {{companies}} <br>
+      hitorial max: {{maximos}} <br>
+      More details: Modal button
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div ng-include="'scripts/templates/calculator.html'"></div>
+    <div class="col-md-6 column">
+          FILTERS
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="row clearfix">
+        <div class="col-md-4 column">
+          Graph general
+          <img class="img-responsive" src="http://jpundits.com/wp-content/uploads/2014/05/stocks-graph.jpg" alt=""/>
+        </div>
+        <div class="col-md-4 column">
+          range data
+          <img class="img-responsive" src="http://jpundits.com/wp-content/uploads/2014/05/stocks-graph.jpg" alt=""/>
+        </div>
+        <div class="col-md-4 column">
+          info data
+          <img class="img-responsive"src="http://jpundits.com/wp-content/uploads/2014/05/stocks-graph.jpg" alt=""/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-lg-4 col-sm-6 text-center">
+    <div class="well">
+      <h4>What is on your mind?</h4>
+      <div class="input-group">
+        <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
+	    <span class="input-group-btn" onclick="addComment()">
+            <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> Add Comment</a>
+        </span>
+      </div>
+      <hr data-brackets-id="12673">
+      <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+        <strong class="pull-left primary-font">James</strong>
+        <small class="pull-right text-muted">
+          <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
+        </br>
+        <li class="ui-state-default">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
+        </br>
+        <strong class="pull-left primary-font">Taylor</strong>
+        <small class="pull-right text-muted">
+          <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+        </br>
+        <li class="ui-state-default">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+
+      </ul>
+    </div>
+  </div>
