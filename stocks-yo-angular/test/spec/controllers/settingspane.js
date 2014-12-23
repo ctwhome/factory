@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: SettingspanectrlCtrl', function () {
+describe('Controller: SettingspaneCtrl', function () {
 
   // load the controller's module
   beforeEach(module('stocksApp'));
 
-  var SettingspanectrlCtrl,
+  var SettingspaneCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    SettingspanectrlCtrl = $controller('SettingspanectrlCtrl', {
+    SettingspaneCtrl = $controller('SettingspaneCtrl', {
       $scope: scope
     });
   }));
