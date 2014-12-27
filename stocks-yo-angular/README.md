@@ -10,12 +10,12 @@ Execute the next parameters
 npm install     // To install dependencies
 bower install   // To install vendor libraries
 
-grunt           // To set the application
+gulp           // To set the application
 ``
 
 Dev
 -----
 ``
-grunt serve   // Run server
-grunt build   // Compilie the distribution application
+gulp server   // Run dev server
+gulp server-dist  // Run server (Dist)
 ``

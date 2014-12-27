@@ -34,11 +34,13 @@
 
 <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 <div class="page-container">
-
     <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
     <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
     <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
-        <div class="sidebar-menu toggle-others fixed {{collapsed}}" ng-controller="SidebarCtrl">
+        <div ng-controller="SidebarCtrl"
+             ng-class="{{collapsed}}"
+             class="sidebar-menu toggle-others fixed {{collapsed}}"
+            >
 
             <div class="sidebar-menu-inner">
                 <ng-include src="'views/sidebar-menu.html'"></ng-include>
@@ -52,6 +54,10 @@
         <!-- Main view-->
         <ng-view></ng-view>
 
+        <div my-toggle type="sidebar">akjsdhfskadhj</div>
+        <!--<dir-template></dir-template>-->
+
+        <ng-toggle toggle="sidebar"></ng-toggle>
         <br/>
         <!-- Main Footer -->
         <ng-include src="'views/footer.html'"></ng-include>
@@ -127,6 +133,7 @@
 <script src="scripts/controllers/sidebar.js"></script>
 
 <script src="scripts/controllers/settingspane.js"></script>
+<script src="scripts/directives/ng-toggle.js"></script>
 <!-- endbuild -->
 </body>
 </html>

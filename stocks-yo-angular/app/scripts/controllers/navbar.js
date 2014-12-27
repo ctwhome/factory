@@ -10,6 +10,6 @@
 angular.module('stocksApp')
     .controller('NavbarCtrl', function ($scope, $rootScope) {
         $scope.sidebarToggle = function () {
-            $rootScope.$broadcast('toggleSidebar');
+            $rootScope.$broadcast('toggleSidebar', 'holaa');
         }
     });
