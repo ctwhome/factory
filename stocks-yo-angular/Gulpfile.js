@@ -1,18 +1,18 @@
 // File: Gulpfile.js
-'use strict';
+'use strict'
 
+/**
+ * Settings App
+ */
 var appPath = 'app/'
 var settings = {
   compass: {
-    mainSass  : appPath + 'styles/main.scss',
+    mainSass  : appPath + 'scss/styles.scss',
     allStyles : appPath + '**/*.scss',
-    // It will generate the same name than the source
-    dest      : appPath + 'css',                
-    
+    dest      : appPath + 'css',                    // It will generate the same name than the source
     // Compass options
     sourcemap : true,
-    // Styles: nested, expanded, compact, or compressed
-    style     : 'compressed',                          
+    style     : 'compressed',                       // Styles: nested, expanded, compact, or compressed
     css       : appPath + 'css',
     sass      : appPath + 'styles',
     image     : appPath + 'images',
@@ -30,34 +30,37 @@ var settings = {
   }
 }
 
-
+/**
+ * Requires
+ */
 var gulp      = require('gulp'),
     gutil     = require('gulp-util'),
 
     path      = require('path'),
     connect   = require('gulp-connect'),
-    opn       = require('opn'),                             // Open Browser
-    
+    opn       = require('opn'),                        // Open Browser
+
     compass   = require('gulp-compass'),
+    glob      = require('glob'),
     minifyCss = require('gulp-minify-css'),
-    
+
     jshint    = require('gulp-jshint'),
     stylish   = require('jshint-stylish'),
-    
+
     inject    = require('gulp-inject'),
     wiredep   = require('wiredep').stream,
-    
+
     gulpif    = require('gulp-if'),
-    useref    = require('gulp-useref'),
-    
+    useref    = require('gulp-useref'),                 // Concat js and css refered in index.html   https://www.npmjs.com/package/gulp-useref
+
     uglify    = require('gulp-uglify'),
-    uncss     = require('gulp-uncss'), 
-    plumber   = require('gulp-plumber'), 
-    angularFilesort     = require('gulp-angular-filesort'),
+    uncss     = require('gulp-uncss'),                  // Delete classes not used.
+    plumber   = require('gulp-plumber'),
     templateCache       = require('gulp-angular-templatecache'),
+    angularFilesort     = require('gulp-angular-filesort'),
     historyApiFallback  = require('connect-history-api-fallback');
 
-// Servidor web de desarrollo
+// Dev server
 gulp.task('server', ['openbrowser'], function() {
   connect.server({
     root: './app',
@@ -100,7 +103,7 @@ gulp.task('compass', function() {
     }}))
     .pipe(compass({
       sourcemap: settings.compass.sourcemap,
-      style : settings.compass.style,                 
+      style : settings.compass.style,
       css: settings.compass.css,
       sass: settings.compass.sass,
       image: settings.compass.image,
@@ -110,7 +113,7 @@ gulp.task('compass', function() {
       // Would like to catch the error here
       console.log(err);
     });
-     gulp.src('./app/styles/main.css')
+     gulp.src(settings.compass.dest)
     .pipe(connect.reload());
 
 });
@@ -121,10 +124,10 @@ gulp.task('html', function() {
     .pipe(connect.reload());
 });
 
+
 /**
 * jshint
 */
-
 // Busca errores en el JS y nos los muestra por pantalla
 gulp.task('jshint', function() {
   return gulp.src('./app/scripts/**/*.js')
@@ -155,7 +158,7 @@ gulp.task('inject', function() {
 gulp.task('wiredep', function () {
   gulp.src('./app/index.html')
     .pipe(wiredep({
-      directory: './app/lib'
+      directory: './app'
     }))
     .pipe(gulp.dest('./app'));
 });
@@ -163,10 +166,10 @@ gulp.task('wiredep', function () {
 // Compila las plantillas HTML parciales a JavaScript
 // para ser inyectadas por AngularJS y minificar el código
 gulp.task('templates', function() {
-  gulp.src('./app/views/**/*.tpl.html')
+  gulp.src('./app/views/**/*.html')
     .pipe(templateCache({
       root: 'views/',
-      module: 'blog.templates',
+      module: 'app.views',
       standalone: true
     }))
     .pipe(gulp.dest('./app/scripts'));
@@ -182,14 +185,6 @@ gulp.task('compress', function() {
     .pipe(gulp.dest('./dist'));
 });
 
-// Elimina el CSS que no es utilizado para reducir el peso del archivo
-gulp.task('uncss', function() {
-  gulp.src('./dist/css/style.min.css')
-    .pipe(uncss({
-      html: ['./app/index.html', './app/views/post-list.tpl.html', './app/views/post-detail.tpl.html']
-    }))
-    .pipe(gulp.dest('./dist/css'));
-});
 
 // Copia el contenido de los estáticos e index.html al directorio
 // de producción sin tags de comentarios
@@ -197,10 +192,28 @@ gulp.task('copy', function() {
   gulp.src('./app/index.html')
     .pipe(useref())
     .pipe(gulp.dest('./dist'));
-  gulp.src('./app/lib/fontawesome/fonts/**')
-    .pipe(gulp.dest('./dist/fonts'));
+
+    gulp.src('./app/styles/fonts/fontawesome/fonts/**').pipe(gulp.dest('./dist/fonts'));
+    gulp.src('./app/styles/fonts/glyphicons/**').pipe(gulp.dest('./dist/font'));
+    gulp.src('./app/styles/fonts/linecons/font/**').pipe(gulp.dest('./dist/font'));
+    gulp.src('./app/styles/fonts/meteocons/font/**').pipe(gulp.dest('./dist/font'));
+    gulp.src('./app/styles/fonts/elusive/font/**').pipe(gulp.dest('./dist/font'));
+
+    gulp.src('./app/views/**')
+        .pipe(gulp.dest('./dist/views'));
+
+    gulp.src('./app/assets/images/**')
+        .pipe(gulp.dest('./dist/assets/images'));
 });
 
+// Elimina el CSS que no es utilizado para reducir el peso del archivo
+gulp.task('uncss', function() {
+    gulp.src('./app/css/styles.css')
+        .pipe(uncss({
+            html: glob.sync('./app/**/*.html')
+        }))
+        .pipe(gulp.dest('./dist/css'));
+});
 
 // gulp.task('tiny', function(next) {
 //   server.listen(35729, function() {
@@ -217,9 +230,10 @@ gulp.task('watch', function() {
   // gulp.watch([settings.compass.allStyles], ['compass']);
   // gulp.watch(['./app/stylesheets/**/*.styl'], ['compass', 'inject']);
   // gulp.watch(['./app/scripts/**/*.js', './Gulpfile.js'], ['jshint', 'inject']);
-  // gulp.watch(['./bower.json'], ['wiredep']);
+  gulp.watch(['./bower.json'], ['wiredep']);
 });
 
 //gulp.task('default', ['server', 'templates', 'inject', 'wiredep', 'watch']);
 gulp.task('default', ['server', 'watch']);
-gulp.task('build', ['templates', 'compress', 'copy', 'uncss']);
+//gulp.task('build', ['templates', 'compress', 'copy', 'uncss']);
+gulp.task('build', ['templates', 'compress', 'copy']);

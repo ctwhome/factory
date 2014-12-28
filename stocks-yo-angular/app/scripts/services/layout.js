@@ -7,8 +7,7 @@
  * # layout
  * Factory in the stocksApp.
  */
-angular.module('stocksApp')
-    .factory('$layout', function () {
+App.factory('$layout', function () {
         // Service logic
         // ... var meaningOfLife = 42;
 

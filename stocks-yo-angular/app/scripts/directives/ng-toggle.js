@@ -6,8 +6,7 @@
  * @description
  * # ngToggle
  */
-angular.module('stocksApp')
-    .directive('myToggle', function ($rootScope) {
+App.directive('myToggle', function ($rootScope) {
         /**
          * USE
          * <div my-toggle type="sidebar">Content of the directive</div>

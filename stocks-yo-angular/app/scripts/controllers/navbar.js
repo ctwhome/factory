@@ -7,8 +7,7 @@
  * # NavbarCtrl
  * Controller of the stocksApp
  */
-angular.module('stocksApp')
-    .controller('NavbarCtrl', function ($scope, $rootScope) {
+    App.controller('NavbarCtrl', function ($scope, $rootScope) {
         $scope.sidebarToggle = function () {
             $rootScope.$broadcast('toggleSidebar', 'holaa');
         }

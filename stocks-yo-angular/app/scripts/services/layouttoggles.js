@@ -7,8 +7,7 @@
  * # layoutToggles
  * Factory in the stocksApp.
  */
-angular.module('stocksApp',[])
-    .factory('$layoutToggles', function ($rootScope, $layout) {
+App.factory('$layoutToggles', function ($rootScope, $layout) {
     // Service logic  Private functions
 
     // Public API here

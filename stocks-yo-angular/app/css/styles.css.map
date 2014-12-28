@@ -3,5 +3,5 @@
 "mappings": "AAAA,KAAM,CACJ,OAAO,CAAE,IAAI,CAGf,CAAE,CACA,MAAM,CAAE,OAAO",
 "sources": ["../styles/framework/_main.scss"],
 "names": [],
-"file": "main.css"
+"file": "styles.css"
 }

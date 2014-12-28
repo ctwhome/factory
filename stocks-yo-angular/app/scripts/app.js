@@ -8,16 +8,17 @@
  *
  * Main module of the application.
  */
-angular
-    .module('stocksApp', [
+var App = angular.module('stocksApp', [
+    //    'app.views',               // View templates into the js code
         'ngAnimate',
         'ngCookies',
         'ngResource',
         'ngRoute',
         'ngSanitize',
         'ngTouch'
-    ])
-    .config(function ($routeProvider) {
+    ]);
+
+    App.config(function ($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
@@ -38,8 +39,4 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
-
-    })
-    .run(function ($layoutToggles) {
-       //  $layoutToggles.initToggles();
     });

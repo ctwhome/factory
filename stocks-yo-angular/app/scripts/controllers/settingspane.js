@@ -7,8 +7,7 @@
  * # SettingspaneCtrl
  * Controller of the stocksApp
  */
-angular.module('stocksApp')
-  .controller('SettingsPaneCtrl', function ($scope, $layout) {
+App.controller('SettingsPaneCtrl', function ($scope, $layout) {
 
         $scope.$on('toggleSettingsPane', function(event, args) {
             $layout.layoutSettings.settingsPane.isOpen = !$layout.layoutSettings.sidebar.isOpen;
