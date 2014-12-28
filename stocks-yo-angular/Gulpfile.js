@@ -1,36 +1,68 @@
 // File: Gulpfile.js
 'use strict';
 
-// var paths ={
-//   'scss-src' : '',
-   
-// }
+var appPath = 'app/'
+var settings = {
+  compass: {
+    mainSass  : appPath + 'styles/main.scss',
+    allStyles : appPath + '**/*.scss',
+    // It will generate the same name than the source
+    dest      : appPath + 'css',                
+    
+    // Compass options
+    sourcemap : true,
+    // Styles: nested, expanded, compact, or compressed
+    style     : 'compressed',                          
+    css       : appPath + 'css',
+    sass      : appPath + 'styles',
+    image     : appPath + 'images',
+    fonts     : appPath + 'css/fonts',
+    temp      : appPath + 'css'
+  },
+  scripts: {
+    src       : appPath + 'assets/js/*.js',
+    dest      : 'app.min.js',
+    folderDest: appPath + 'assets/js'
+  },
+  server : {
+    host      : "0.0.0.0",
+    port      : "9000"
+  }
+}
 
 
 var gulp      = require('gulp'),
+    gutil     = require('gulp-util'),
+
+    path      = require('path'),
     connect   = require('gulp-connect'),
+    opn       = require('opn'),                             // Open Browser
+    
+    compass   = require('gulp-compass'),
+    minifyCss = require('gulp-minify-css'),
+    
     jshint    = require('gulp-jshint'),
     stylish   = require('jshint-stylish'),
+    
     inject    = require('gulp-inject'),
     wiredep   = require('wiredep').stream,
+    
     gulpif    = require('gulp-if'),
     useref    = require('gulp-useref'),
+    
     uglify    = require('gulp-uglify'),
     uncss     = require('gulp-uncss'), 
     plumber   = require('gulp-plumber'), 
-    path      = require('path'),
-    compass   = require('gulp-compass'),
-    minifyCss = require('gulp-minify-css'),
     angularFilesort     = require('gulp-angular-filesort'),
     templateCache       = require('gulp-angular-templatecache'),
     historyApiFallback  = require('connect-history-api-fallback');
 
 // Servidor web de desarrollo
-gulp.task('server', function() {
+gulp.task('server', ['openbrowser'], function() {
   connect.server({
     root: './app',
-    hostname: '0.0.0.0',
-    port: 9000,
+    hostname: settings.server.host,
+    port: settings.server.port,
     livereload: true,
     middleware: function(connect, opt) {
       return [ historyApiFallback ];
@@ -42,8 +74,8 @@ gulp.task('server', function() {
 gulp.task('server-dist', function() {
   connect.server({
     root: './dist',
-    hostname: '0.0.0.0',
-    port: 8080,
+    hostname: settings.server.host,
+    port: settings.server.port,
     livereload: true,
     middleware: function(connect, opt) {
       return [ historyApiFallback ];
@@ -51,39 +83,54 @@ gulp.task('server-dist', function() {
   });
 });
 
-// Busca errores en el JS y nos los muestra por pantalla
-gulp.task('jshint', function() {
-  return gulp.src('./app/scripts/**/*.js')
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
+/*
+ * Open browser
+ */
+gulp.task('openbrowser', function() {
+  opn( 'http://' + settings.server.host + ':' + settings.server.port );
 });
 
 // Preprocesa archivos Stylus a CSS y recarga los cambios
 gulp.task('compass', function() {
-  gulp.src('./src/*.scss')
+  gulp.src(settings.compass.mainSass)
     .pipe(plumber({
       errorHandler: function (error) {
         console.log(error.message);
         this.emit('end');
     }}))
     .pipe(compass({
-      css: 'app/assets/css',
-      sass: 'app/assets/sass',
-      image: 'app/assets/images'
+      sourcemap: settings.compass.sourcemap,
+      style : settings.compass.style,                 
+      css: settings.compass.css,
+      sass: settings.compass.sass,
+      image: settings.compass.image,
+      comments: false
     }))
     .on('error', function(err) {
       // Would like to catch the error here
-    })
-    .pipe(minifyCSS())
-    .pipe(gulp.dest('app/assets/temp'))
+      console.log(err);
+    });
+     gulp.src('./app/styles/main.css')
     .pipe(connect.reload());
+
 });
 
 // Recarga el navegador cuando hay cambios en el HTML
 gulp.task('html', function() {
   gulp.src('./app/**/*.html')
     .pipe(connect.reload());
+});
+
+/**
+* jshint
+*/
+
+// Busca errores en el JS y nos los muestra por pantalla
+gulp.task('jshint', function() {
+  return gulp.src('./app/scripts/**/*.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail'));
 });
 
 // Busca en las carpetas de estilos y javascript los archivos
@@ -154,15 +201,25 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('./dist/fonts'));
 });
 
+
+// gulp.task('tiny', function(next) {
+//   server.listen(35729, function() {
+//     gutil.log('Server listening on port: ', gutil.colors.magenta(port));
+//     next();
+//   });
+// });
+
 // Vigila cambios que se produzcan en el código
 // y lanza las tareas relacionadas
 gulp.task('watch', function() {
   gulp.watch(['./app/**/*.html'], ['html', 'templates']);
-  gulp.watch(['./app/stylesheets/**/*.styl'], ['compass', 'inject']);
-  gulp.watch(['./app/scripts/**/*.js', './Gulpfile.js'], ['jshint', 'inject']);
-  gulp.watch(['./bower.json'], ['wiredep']);
+  gulp.watch(['./app/**/*.scss'], ['compass']);
+  // gulp.watch([settings.compass.allStyles], ['compass']);
+  // gulp.watch(['./app/stylesheets/**/*.styl'], ['compass', 'inject']);
+  // gulp.watch(['./app/scripts/**/*.js', './Gulpfile.js'], ['jshint', 'inject']);
+  // gulp.watch(['./bower.json'], ['wiredep']);
 });
 
 //gulp.task('default', ['server', 'templates', 'inject', 'wiredep', 'watch']);
-gulp.task('default', ['server', 'inject', 'wiredep', 'watch']);
+gulp.task('default', ['server', 'watch']);
 gulp.task('build', ['templates', 'compress', 'copy', 'uncss']);

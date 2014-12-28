@@ -10,16 +10,9 @@
 
 /* VENDOR - Default fall-backs and external files.
 ========================================================================== */
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-@import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
-
-// Xenon template
-@import 'xenon.css';
-@import 'xenon-components.css';
-@import 'xenon-core.css';
-@import 'xenon-forms.css';
-@import 'xenon-skins.css';
-
+// $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// @import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+//@import 'xenon';
 
 
 /* BASE - Base Variable file along with starting point Mixins and Placeholders.
