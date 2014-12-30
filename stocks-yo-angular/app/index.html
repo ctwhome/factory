@@ -20,6 +20,7 @@
 </head>
 <body ng-app="stocksApp" class="page-body settings-pane-open">
 
+
 <ng-include src="'views/settings-pane.html'"></ng-include>
 
 <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -41,7 +42,8 @@
         <ng-include src="'views/navbar.html'"></ng-include>
 
         <!-- Main view-->
-        <div ng-view></div>
+
+        <div ng-view><div loading></div>    </div>
 
         <div my-toggle type="sidebar"></div>
         <!--<dir-template></dir-template>-->
@@ -98,6 +100,7 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
 <!-- endbower -->
 
     <script src="scripts/app.js"></script>
@@ -119,6 +122,9 @@
     <!--<script src="scripts/templates.js"></script>-->
 
 
+<script src="scripts/services/recipe.js"></script>
+<script src="scripts/directives/butterbar.js"></script>
+<script src="scripts/controllers/recipes.js"></script>
 <!-- endbuild -->
 
 </body>
