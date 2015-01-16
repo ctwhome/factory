@@ -1,0 +1,129 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+ 
+
+     <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
+        <link href="theme/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="theme/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+        <link href="theme/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="theme/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+        <link href="theme/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+        <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
+
+
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- inject:css -->
+    <!-- endinject -->
+
+
+</head>
+<body ng-app="stocksApp" class="page-body settings-pane-open">
+
+<!--<ng-include src="'views/settings-pane.html'"></ng-include>-->
+
+<!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+<div class="page-container">
+    <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+    <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+    <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+        <div ng-controller="SidebarCtrl"
+             ng-class="{{collapsed}}"
+             class="sidebar-menu toggle-others fixed {{collapsed}}">
+
+            <div class="sidebar-menu-inner">
+                <ng-include src="'views/sidebar-menu.html'"></ng-include>
+            </div>
+        </div>
+
+    <div class="main-content">
+        <!-- top bar - navbar -->
+        <ng-include src="'views/navbar.html'"></ng-include>
+
+        <!-- Main view-->
+        <div ng-view=""></div>
+
+        <div my-toggle type="sidebar"></div>
+        <!--<dir-template></dir-template>-->
+
+        <ng-toggle toggle="sidebar"></ng-toggle>
+        <br/>
+        <!-- Main Footer -->
+        <ng-include src="'views/footer.html'"></ng-include>
+    </div>
+
+</div>
+
+<!--Footer chat-->
+<!--<ng-include src="'views/footer-chat-view.html'"></ng-include>-->
+
+<!-- build:js(.) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+
+
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/help.js"></script>
+
+<script src="scripts/services/layout.js"></script>
+
+<script src="scripts/controllers/navbar.js"></script>
+<script src="scripts/controllers/sidebar.js"></script>
+
+<script src="scripts/controllers/documentation.js"></script>
+<script src="scripts/controllers/versionlog.js"></script>
+<script src="scripts/controllers/icons.js"></script>
+<script src="scripts/controllers/accessibility.js"></script>
+<script src="scripts/controllers/extra-search.js"></script>
+<!-- endbuild -->
+
+
+<!-- bower:js -->
+<!-- endbower -->
+<!-- inject:js -->
+<!-- endinject -->
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+/**
+ * Sass files
+ * ----------------------
+ * @author Jesus Garcia <ctw@ctwhome.com>
+ * @repository https://github.com/ctwhome/sass-structure
+ *
+ * Styles scss
+ * ---------------------
+ */
+
+/* VENDOR - Default fall-backs and external files.
+========================================================================== */
+// $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// @import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+//@import 'xenon';
+
+
+/* BASE - Base Variable file along with starting point Mixins and Placeholders.
+========================================================================== */
+//@import 'framework/responsive';      // If not using any framework
+
+
+/* MODULES - Re-usable site elements.
+========================================================================== */
+//@import 'framework/modules/paint';
+
+
+/* FRAMEWORK - Structure and layout files.
+========================================================================== */
+@import 'framework/main';
+
+
+// views - pages
